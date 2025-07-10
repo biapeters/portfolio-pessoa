@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bianca Peters - Meu Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="logo">Meu Portfólio</a>
+            <ul class="nav-links">
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Missão: aprender, criar e evoluir.</h1>
+                    <p>Bem-vindo!<br>
+                    Criar, errar, aprender, repetir e me divertir no caminho. Se você curte boas ideias e projetos com personalidade, tá no lugar certo!</p>
+                    <div class="hero-buttons">
+                        <a href="#projetos" class="btn primary-btn">Projetos</a>
+                        <a href="#sobre" class="btn secondary-btn">Sobre mim</a>
+                    </div>
+                </div>
+                <img src="assets/main-image.png" alt="Imagem de Perfil" class="hero-profile-image">
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section">
+            <div class="container about-content">
+                <h2 class="section-title">Quem sou eu?</h2>
+                <div class="about-text-box">
+                    <p>Olá! Eu me chamo Bianca, sou apaixonada por tecnologia, design e games. Estou cursando tecnólogo em Inteligência Artificial na PUCPR, atualmente no 2º semestre.</p>
+                    <p>Gosto de criar com atenção aos detalhes, clareza visual e um toque de feminilidade. Acredito que tecnologia também pode ser sensível, acolhedora e inspiradora.</p>
+                    <p>Meu objetivo é atuar em projetos que impactem positivamente a vida das pessoas. Estou aberta a novas oportunidades e colaborações criativas.</p>
+                    <p>Seja bem-vindo(a) ao meu espaço!</p>
+                </div>
+                <a href="#projetos" class="btn primary-btn">Ver meus trabalhos</a>
+            </div>
+        </section>
+
+        <section id="projetos" class="work-section">
+            <div class="container">
+                <h2 class="section-title">Meus trabalhos até agora!</h2>
+                <p class="work-description">
+                    Aqui compartilho um pouco da minha trajetória acadêmica e profissional, com experiências que venho construindo como programadora e designer de UX.
+                </p>
+
+                <div class="work-cards">
+                    <a href="pages/academicos.html" class="work-link-card">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 10H10V12H14V10ZM14 14H10V16H14V14ZM20 6H4C2.9 6 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 20H4V8H20V20Z" fill="url(#gradientAcademic)"/>
+                                <defs>
+                                    <linearGradient id="gradientAcademic" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="var(--color-light-purple)"/>
+                                        <stop offset="100%" stop-color="var(--color-green-accent)"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3>Trabalhos acadêmicos</h3>
+                        <p>Já elaborei códigos utilizando <strong>Python, Java, SQL, HTML e CSS</strong>, em trabalhos que envolvem desde automações simples até páginas web completas e sistemas orientados a objetos.</p>
+                    </a>
+
+                    <a href="pages/pessoais.html" class="work-link-card">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM17 13H13V17H11V13H7V11H11V7H13V11H17V13Z" fill="url(#gradientPersonal)"/>
+                                <defs>
+                                    <linearGradient id="gradientPersonal" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="var(--color-light-purple)"/>
+                                        <stop offset="100%" stop-color="var(--color-green-accent)"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3>Projetos pessoais</h3>
+                        <p>São frutos da curiosidade, do aprendizado contínuo e da vontade de explorar novas possibilidades além do ambiente acadêmico. Eles surgem a partir de cursos, pesquisas por conta própria ou simplesmente da vontade de transformar ideias em algo concreto.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Fale comigo ou pergunte o que quiser</h2>
+                <p class="contact-description">
+                    Tem uma ideia de projeto, feedback ou quer só bater um papo sobre UX ou programação? Estou sempre animada para me conectar e trocar histórias, fique à vontade para entrar em contato a qualquer hora.
+                </p>
+                <div class="contact-methods">
+                    <a href="mailto:bianca.sjb0909@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="url(#gradientContactEmail)"/>
+                                <defs>
+                                    <linearGradient id="gradientContactEmail" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="var(--color-light-purple)"/>
+                                        <stop offset="100%" stop-color="var(--color-green-accent)"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3>E-mail</h3>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/biancapetersbarroso/" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM8 18H5V9H8V18ZM6.5 7.5C5.67 7.5 5 6.83 5 6C5 5.17 5.67 4.5 6.5 4.5C7.33 4.5 8 5.17 8 6C8 6.83 7.33 7.5 6.5 7.5ZM19 18H16V13.5C16 12.4 15.1 11.5 14 11.5C12.9 11.5 12 12.4 12 13.5V18H9V9H12V10.22C12.51 9.4 13.43 8.8 14.5 8.8C16.36 8.8 18 10.42 18 12.8V18H19V18Z" fill="url(#gradientContactLinkedIn)"/>
+                                <defs>
+                                    <linearGradient id="gradientContactLinkedIn" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="var(--color-light-purple)"/>
+                                        <stop offset="100%" stop-color="var(--color-green-accent)"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3>LinkedIn</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bianca Peters. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
