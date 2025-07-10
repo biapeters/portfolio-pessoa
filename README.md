@@ -8,7 +8,7 @@ Bem-vindo(a) ao meu portfólio! Este espaço reúne uma seleção dos meus proje
 
 Você pode explorar o portfólio completo e os projetos em funcionamento através do GitHub Pages:
 
-[**Acessar Meu Portfólio Online**](https://biapeters.github.io/NOME_DO_SEU_REPOSITORIO/)
+[**Acessar Meu Portfólio Online**](https://biapeters.github.io/portfolio-pessoa/)
 
 ---
 
