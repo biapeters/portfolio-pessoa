@@ -349,7 +349,7 @@ main {
     width: 60px;
     height: 60px;
     border-radius: var(--border-radius-circle); 
-    display: flex; /* Adicionado display flex para centralizar SVG */
+    display: flex; 
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
@@ -505,28 +505,23 @@ main {
 }
 
 .projects-container {
-    display: flex; 
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; 
-    padding: 20px; 
-    max-width: 1200px; 
-    margin: 0 auto; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-gap);
+    justify-items: center;
 }
 
 .project-item {
     background-color: var(--color-card-background);
     border-radius: var(--border-radius-medium);
-    padding: 25px; 
+    padding: 30px;
     box-shadow: var(--box-shadow-medium);
     border: 1px solid var(--color-border-card);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1 1 calc(50% - 40px); 
-    max-width: calc(50% - 40px);
-    box-sizing: border-box; 
+    width: 100%; 
 }
 
 .project-item:hover {
@@ -536,56 +531,116 @@ main {
 }
 
 .project-item h3 {
-    font-size: 1.5em; 
+    font-size: 1.6rem;
     font-weight: 600;
-    margin-bottom: 10px; 
+    margin-bottom: 15px;
     color: var(--color-text-light);
 }
 
 .project-item .project-description {
-    font-size: 0.95em; 
+    font-size: 0.95rem;
     color: var(--color-text-medium);
     margin-bottom: 15px;
-    flex-grow: 1;
+    flex-grow: 1; 
 }
 
 .project-item .project-tech {
-    font-size: 0.95em; 
+    font-size: 0.9rem;
     color: var(--color-green-accent);
     margin-bottom: 15px;
     font-weight: 500;
 }
 
 .project-item .project-links {
-    display: flex; 
-    gap: 10px; 
-    margin-top: 20px; 
-    flex-wrap: wrap;
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap; 
 }
 
-.project-item .btn-small {
-    padding: 8px 15px; 
-    font-size: 0.9rem; 
+.project-item .btn-small { 
+    padding: 10px 20px;
+    font-size: 0.9rem;
 }
 
 .project-item .project-learnings {
-    font-size: 0.9em; 
+    font-size: 0.9rem;
     color: var(--color-text-medium);
     font-style: italic;
-    margin-top: auto; 
+    margin-top: 15px;
     border-top: 1px solid var(--color-border-subtle);
     padding-top: 15px;
 }
 
 
 /* ======================== */
-/* RESPONSIVIDADE (AJUSTES PARA PÁGINAS DE PROJETOS) */
+/* RESPONSIVIDADE */
 /* ======================== */
 
 @media (max-width: 992px) {
-    /* Ajustes específicos para as páginas de projetos */
+    /* HEADER E NAV */
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* HERO */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-profile-image {
+        max-width: 300px;
+        margin-top: 30px;
+    }
+    .hero-text {
+        max-width: 100%;
+    }
+
+    /* SEÇÃO GERAL */
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    /* SOBRE MIM */
+    .about-text-box {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .about-text-box p {
+        font-size: 1rem;
+    }
+
+    /* TRABALHOS */
+    .work-section {
+        padding: 80px 0;
+    }
+    .work-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .work-description {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+    .work-link-card {
+        padding: 25px;
+    }
+    .work-link-card h3 {
+        font-size: 1.3rem;
+    }
+    .work-link-card p {
+        font-size: 0.9rem;
+    }
+
+    /* CONTATO */
+    .contact-link-card {
+        max-width: 90%;
+    }
+
+    /* RESPONSIVIDADE ESPECÍFICA PARA PÁGINAS DE PROJETOS */
     .projects-container {
-        gap: 15px; 
+        gap: 15px; /
     }
     .project-item {
         flex: 1 1 calc(90% - 30px); 
@@ -604,10 +659,57 @@ main {
 }
 
 @media (max-width: 768px) {
-    /* Ajustes específicos para as páginas de projetos */
+    /* HEADER E NAV */
+    .nav-links {
+        gap: 15px;
+    }
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    /* HERO */
+    .hero-profile-image {
+        max-width: 200px;
+    }
+
+    /* SEÇÃO GERAL */
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* SOBRE MIM */
+    .about-section {
+        padding: 80px 0;
+    }
+    .about-text-box {
+        padding: 25px;
+    }
+
+    /* TRABALHOS */
+    .work-cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    .work-link-card { 
+        text-align: center;
+        align-items: center;
+    }
+
+    /* CONTATO */
+    .contact-methods {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-description {
+        font-size: 1em;
+        padding: 0 15px;
+    }
+
+    /* RESPONSIVIDADE ESPECÍFICA PARA PÁGINAS DE PROJETOS */
     .projects-container {
         flex-direction: column; 
-        align-items: center;
+        align-items: center; 
         padding: 15px;
         gap: 15px;
     }
@@ -629,7 +731,67 @@ main {
 }
 
 @media (max-width: 480px) {
-    /* Ajustes específicos para as páginas de projetos */
+    /* HERO */
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+    .hero-profile-image {
+        max-width: 150px; 
+    }
+    .hero-buttons {
+        flex-direction: column; 
+        gap: 15px;
+    }
+
+    /* SEÇÃO GERAL */
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* SOBRE MIM */
+    .about-section {
+        padding: 60px 0;
+    }
+    .about-text-box p {
+        font-size: 0.9rem;
+    }
+
+    /* TRABALHOS */
+    .work-section {
+        padding: 40px 0;
+    }
+    .work-description {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    .work-link-card {
+        padding: 20px;
+    }
+    .work-link-card h3 {
+        font-size: 1.2rem;
+    }
+    .work-link-card .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .work-link-card .card-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* CONTATO */
+    .contact-link-card {
+        padding: 20px;
+    }
+    .contact-link-card h3 {
+        font-size: 1.3em;
+    }
+
+    /* RESPONSIVIDADE ESPECÍFICA PARA PÁGINAS DE PROJETOS */
     .project-item {
         padding: 15px;
     }
