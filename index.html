@@ -20,7 +20,29 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <button id="toggle-theme-btn" aria-label="Alternar tema" title="Alternar tema">🌙</button>
+             <div class="theme-toggle-container">
+                <button class="theme-toggle" id="toggle-theme-btn" aria-label="Alternar tema" title="Alternar tema">
+                    <div class="theme-toggle-slider">
+                        <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#00D4FF"/>
+                            <circle cx="18" cy="6" r="1" fill="#fff"/>
+                            <circle cx="16" cy="4" r="0.5" fill="#fff"/>
+                            <circle cx="20" cy="8" r="0.5" fill="#fff"/>
+                        </svg>
+                        <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="5" stroke="#FF6B35" stroke-width="2" fill="#FF6B35"/>
+                            <line x1="12" y1="1" x2="12" y2="3" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="12" y1="21" x2="12" y2="23" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="1" y1="12" x2="3" y2="12" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="21" y1="12" x2="23" y2="12" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </button>
+            </div>
         </nav>
     </header>
 
