@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para verificar se um elemento está visível na tela
     function isElementInViewport(element) {
         const rect = element.getBoundingClientRect();
-        const threshold = 100; // pixels antes de aparecer
+        const threshold = 100; 
         
         return (
             rect.top >= -threshold &&
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Efeito de typing no título principal (opcional)
+    // Efeito de typing no título principal
     const mainTitle = document.querySelector('h1');
     if (mainTitle && mainTitle.textContent.includes('Missão:')) {
         const originalText = mainTitle.textContent;
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Modal para imagens de projeto (se existir)
+    // Modal para imagens de projeto
     const projectImages = document.querySelectorAll('.project-image img');
     projectImages.forEach(img => {
         img.addEventListener('click', function() {
@@ -458,17 +458,17 @@ window.addEventListener('load', function() {
 });
 
 // Tema escuro //
-const toggleBtn = document.getElementById('toggle-theme-btn'); // <-- trocar aqui
+const toggleBtn = document.getElementById('toggle-theme-btn');
 const body = document.body;
 
 // Função para aplicar tema
 function applyTheme(theme) {
     if (theme === 'dark') {
         body.classList.add('dark-theme');
-        toggleBtn.textContent = '☀️'; // ícone sol
+        toggleBtn.textContent = '☀️';
     } else {
         body.classList.remove('dark-theme');
-        toggleBtn.textContent = '🌙'; // ícone lua
+        toggleBtn.textContent = '🌙'; 
     }
 }
 
