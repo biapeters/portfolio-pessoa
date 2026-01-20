@@ -2,10 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* ======================== */
-/* VARIÁVEIS CSS (ROOT) - NOVA PALETA */
+/* VARIÁVEIS CSS */
 /* ======================== */
 :root {
-    /* Nova Paleta de Cores Claras */
     --color-soft-cream: #F8F6F0;
     --color-soft-pink: #F4E4F1;
     --color-soft-lavender: #E8D5F2;
@@ -1064,7 +1063,6 @@ main {
         padding: 0 15px;
     }
     
-    /* Header muito pequeno */
     .navbar {
         flex-direction: column;
         gap: 10px;
@@ -1106,7 +1104,6 @@ main {
         height: 14px;
     }
 
-    /* Hero muito pequeno */
     .hero-section {
         min-height: auto;
         padding: 40px 0;
@@ -1126,13 +1123,11 @@ main {
         margin-bottom: 20px;
     }
 
-    /* Títulos muito pequenos */
     .section-title {
         font-size: 1.7rem;
         margin-bottom: 25px;
     }
 
-    /* Seções muito pequenas */
     .about-section,
     .work-section,
     .contact-section,
@@ -1150,7 +1145,6 @@ main {
         margin-bottom: 15px;
     }
 
-    /* Botões muito pequenos */
     .btn {
         padding: 12px 24px;
         font-size: 0.95rem;
@@ -1184,7 +1178,6 @@ main {
         font-size: 0.9rem;
     }
 
-    /* PROJETOS MUITO PEQUENOS  */
     .projects-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1242,7 +1235,6 @@ main {
         padding-top: 15px;
     }
 
-    /* Page header muito pequeno */
     .page-header {
         padding: 40px 0 30px 0;
     }
@@ -1259,7 +1251,6 @@ main {
         border-radius: 8px;
     }
 
-    /* Footer muito pequeno */
     .footer {
         padding: 20px 0;
         font-size: 0.85rem;
