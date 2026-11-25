@@ -1,40 +1,68 @@
-# 🌟 Meu Portfólio de Desenvolvimento e IA
+# 🌟 Portfólio · Bianca Peters
 
-Bem-vindo(a) ao meu portfólio! Este espaço reúne uma seleção dos meus projetos acadêmicos e pessoais, demonstrando minhas habilidades em programação, inteligência artificial e design.
+Meu portfólio pessoal: experiência com e-commerce na VTEX, formação em Inteligência Artificial pela PUCPR e projetos acadêmicos e pessoais.
 
----
+**[Ver online →](https://biapeters.github.io/portfolio-pessoa/)**
 
-## 🚀 Ver o Portfólio Online
+## 🛠️ Tecnologias
 
-Você pode explorar o portfólio completo e os projetos em funcionamento através do GitHub Pages:
+- **React** com **Vite**
+- **Tailwind CSS**
+- **Motion** (animações)
+- Avatar em pixel art desenhado em `<canvas>`
 
-[**Acessar Meu Portfólio Online**](https://biapeters.github.io/portfolio-pessoa/)
+## 🚀 Rodando localmente
 
----
+Precisa do [Node.js](https://nodejs.org/) instalado.
 
-## ✨ O que você encontrará aqui
+```bash
+npm install     # só na primeira vez
+npm run dev     # abre em http://localhost:5173/portfolio-pessoa/
+```
 
-* **Projetos Acadêmicos:** Trabalhos desenvolvidos durante meus estudos, explorando Python, Java, SQL, HTML, CSS e conceitos de POO e banco de dados.
-* **Projetos Pessoais:** Iniciativas próprias que me permitiram aprender novas tecnologias e aplicar conhecimentos em cenários práticos, como a integração com APIs de IA.
+Outros comandos:
 
----
+```bash
+npm run build    # gera a versão final na pasta dist/
+npm run preview  # testa a versão final localmente
+```
 
-## 🛠️ Tecnologias Utilizadas
+## 📁 Estrutura
 
-Este portfólio foi construído com:
+```
+├── public/                 # arquivos servidos como estão
+│   ├── images/
+│   └── videos/
+├── src/
+│   ├── components/
+│   │   ├── layout/         # Navbar, rodapé, fundo, barra de progresso
+│   │   ├── sections/       # Hero, Sobre, Experiência, Projetos, Contato
+│   │   ├── projects/       # Card e modal de projeto
+│   │   ├── PixelAvatar/    # Avatar em pixel art (mapa + animações)
+│   │   └── ui/             # Peças reutilizáveis (ícones, tags, animações)
+│   ├── data/               # ✏️ Conteúdo do site (edite aqui!)
+│   │   ├── profile.js      # contato, frases do topo, tecnologias
+│   │   ├── experience.js   # experiência e formação
+│   │   └── projects.js     # projetos
+│   ├── hooks/
+│   ├── App.jsx
+│   └── index.css           # tema do Tailwind
+└── .github/workflows/      # deploy automático no GitHub Pages
+```
 
-* **HTML5:** Estrutura das páginas.
-* **CSS3:** Estilização e responsividade.
-* **JavaScript:** Interatividade (se houver scripts no futuro).
+### Adicionar um projeto
 
-Os projetos apresentados utilizam diversas outras tecnologias, como Python, Java, SQL e a Google Gemini API.
+1. Coloque o vídeo ou imagem em `public/videos/` ou `public/images/`.
+2. Copie um dos objetos em `src/data/projects.js` e ajuste os campos.
 
----
+## 🌐 Deploy
+
+A cada push na `main`, o GitHub Actions gera o site e publica no GitHub Pages (`.github/workflows/deploy.yml`).
 
 ## ✉️ Contato
 
-Sinta-se à vontade para entrar em contato através do meu [LinkedIn](https://www.linkedin.com/in/biancapetersbarroso/) ou e-mail (disponível na seção de contato do portfólio).
+[LinkedIn](https://www.linkedin.com/in/biancapetersbarroso/) · bianca.sjbb0909@gmail.com
 
 ---
 
-Made with ❤️ by Bianca Peters
+Feito com 💜 (e muito chá 🍵) por Bianca Peters

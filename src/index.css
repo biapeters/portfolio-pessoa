@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Tema escuro controlado pela classe .dark no <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+    --font-pixel: "Press Start 2P", ui-monospace, monospace;
+
+    --color-ink: #2d1b40;
+    --color-cream: #f7f2fb;
+    --color-night: #141127;
+    --color-night-2: #1f1a3a;
+    --color-lilac-200: #e2d1ff;
+    --color-lilac-300: #c99bff;
+    --color-lilac-400: #a08cf5;
+    --color-lilac-500: #8b6ff0;
+    --color-lilac-700: #6b4fc8;
+    --color-candy: #ff9fc6;
+    --color-peach: #ff8a50;
+    --color-sky: #5c85d6;
+
+    --animate-marquee: marquee 35s linear infinite;
+    --animate-bob: bob 1.6s steps(2) infinite;
+    --animate-twinkle: twinkle 2.4s steps(2) infinite;
+
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    @keyframes bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+    }
+
+    @keyframes twinkle {
+        50% { opacity: 0.3; }
+    }
+}
+
+/* Cartão de vidro usado em várias seções */
+@utility glass {
+    border: 1px solid rgb(255 255 255 / 0.7);
+    background: rgb(255 255 255 / 0.65);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 48px -24px rgb(139 111 240 / 0.35);
+
+    @variant dark {
+        border-color: rgb(255 255 255 / 0.08);
+        background: rgb(255 255 255 / 0.04);
+        box-shadow: 0 24px 48px -24px rgb(0 0 0 / 0.6);
+    }
+}
+
+@utility text-gradient {
+    background: linear-gradient(90deg, #5c85d6, #8a2be2, #ff69b4, #ff8a50);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@utility pixelated {
+    image-rendering: pixelated;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-cream font-sans text-ink antialiased dark:bg-night dark:text-violet-50;
+    /* rede de segurança: nada pode criar rolagem lateral no celular */
+    overflow-x: clip;
+}
+
+::selection {
+    @apply bg-lilac-300 text-ink;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
