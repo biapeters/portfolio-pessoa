@@ -24,6 +24,15 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    // menu do celular: o pulo nativo do link (#secao) era cancelado quando o menu fechava,
+    // e a página ficava parada. Então fechamos o menu e rolamos nós mesmos, no quadro seguinte.
+    const goTo = (e, id) => {
+        e.preventDefault();
+        setOpen(false);
+        history.pushState(null, '', `#${id}`);
+        requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
+    };
+
     return (
         <header
             className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
@@ -93,7 +102,7 @@ export default function Navbar() {
                             >
                                 <a
                                     href={`#${link.id}`}
-                                    onClick={() => setOpen(false)}
+                                    onClick={(e) => goTo(e, link.id)}
                                     className="block py-3 text-lg font-medium"
                                 >
                                     {link.label}

@@ -30,9 +30,8 @@ export default function Projects() {
     const [expanded, setExpanded] = useState(false);
     const hiddenCount = expanded ? 0 : Math.max(0, visible.length - GRID_LIMIT);
 
-    // ao trocar o filtro, volta o carrossel para o primeiro card e recolhe a grade
+    // ao trocar o filtro (a lista é recriada já no começo), zera as bolinhas e recolhe a grade
     useEffect(() => {
-        trackRef.current?.scrollTo({ left: 0 });
         setActive(0);
         setExpanded(false);
     }, [filter]);
@@ -77,25 +76,30 @@ export default function Projects() {
                     </div>
                 </Reveal>
 
-                {/* celular: carrossel de arrastar pro lado; md: grade de 2 colunas; lg: 3 colunas */}
-                <div
+                {/* celular: carrossel de arrastar pro lado; md: grade de 2 colunas; lg: 3 colunas.
+                    A key={filter} recria a lista a cada filtro (com fade). Não usar AnimatePresence
+                    popLayout/layout aqui: dentro do carrossel isso fazia a página pular pra cima no celular. */}
+                <motion.div
+                    key={filter}
                     ref={trackRef}
                     onScroll={handleScroll}
                     aria-label="Projetos"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
                     className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden"
                 >
-                    <AnimatePresence mode="popLayout">
-                        {visible.map((project, i) => (
-                            <ProjectCard
-                                key={project.id}
-                                project={project}
-                                onOpen={setSelected}
-                                // no grid (md+) mostra só os primeiros até clicar em "Ver todos"; no carrossel aparecem todos
-                                className={!expanded && i >= GRID_LIMIT ? 'md:hidden' : ''}
-                            />
-                        ))}
-                    </AnimatePresence>
-                </div>
+                    {visible.map((project, i) => (
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            index={i}
+                            onOpen={setSelected}
+                            // no grid (md+) mostra só os primeiros até clicar em "Ver todos"; no carrossel aparecem todos
+                            className={!expanded && i >= GRID_LIMIT ? 'md:hidden' : ''}
+                        />
+                    ))}
+                </motion.div>
 
                 {hiddenCount > 0 && (
                     <div className="mt-10 hidden justify-center md:flex">

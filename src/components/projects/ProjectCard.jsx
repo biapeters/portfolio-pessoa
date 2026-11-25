@@ -8,7 +8,7 @@ import Tags from '../ui/Tags.jsx';
 const CATEGORY_LABEL = { profissional: 'Profissional', academico: 'Acadêmico', pessoal: 'Pessoal' };
 
 // Card com inclinação 3D e brilho que seguem o mouse; o vídeo toca ao passar o mouse
-export default function ProjectCard({ project, onOpen, className = '' }) {
+export default function ProjectCard({ project, onOpen, index = 0, className = '' }) {
     const cardRef = useRef(null);
     const videoRef = useRef(null);
     const rotateX = useMotionValue(0);
@@ -43,11 +43,9 @@ export default function ProjectCard({ project, onOpen, className = '' }) {
 
     return (
         <motion.article
-            layout
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, delay: Math.min(index, 5) * 0.05 }}
             ref={cardRef}
             onMouseMove={handleMove}
             onMouseEnter={handleEnter}

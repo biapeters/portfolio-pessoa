@@ -27,8 +27,9 @@ export default function ProjectModal({ project, onClose }) {
     return (
         <motion.div
             // flex + m-auto no filho: centraliza quando cabe e, quando o conteúdo é maior que a tela,
-            // começa do topo e rola (com place-items-center o topo ficava cortado no celular)
-            className="fixed inset-0 z-50 flex overflow-y-auto overscroll-contain bg-ink/60 p-3 backdrop-blur-sm sm:p-4"
+            // começa do topo e rola (com place-items-center o topo ficava cortado no celular).
+            // flex-col + shrink-0 no filho: sem isso o modal era espremido à altura da tela e o resto sumia
+            className="fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-ink/60 p-3 backdrop-blur-sm sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -43,7 +44,7 @@ export default function ProjectModal({ project, onClose }) {
                 exit={{ opacity: 0, y: 40, scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 25 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative m-auto w-full max-w-3xl overflow-clip rounded-3xl bg-cream shadow-2xl sm:my-8 dark:bg-night-2"
+                className="relative m-auto w-full max-w-3xl shrink-0 overflow-clip rounded-3xl bg-cream shadow-2xl sm:my-8 dark:bg-night-2"
             >
                 {/* botão de fechar "grudado" no topo enquanto a pessoa rola o modal */}
                 <div className="sticky top-0 z-10 flex h-0 justify-end">
