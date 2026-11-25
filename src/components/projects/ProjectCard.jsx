@@ -8,7 +8,7 @@ import Tags from '../ui/Tags.jsx';
 const CATEGORY_LABEL = { profissional: 'Profissional', academico: 'Acadêmico', pessoal: 'Pessoal' };
 
 // Card com inclinação 3D e brilho que seguem o mouse; o vídeo toca ao passar o mouse
-export default function ProjectCard({ project, onOpen }) {
+export default function ProjectCard({ project, onOpen, className = '' }) {
     const cardRef = useRef(null);
     const videoRef = useRef(null);
     const rotateX = useMotionValue(0);
@@ -53,7 +53,8 @@ export default function ProjectCard({ project, onOpen }) {
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
             style={{ rotateX: springX, rotateY: springY, transformPerspective: 900 }}
-            className="glass group relative flex flex-col overflow-hidden rounded-3xl"
+            // no celular cada card ocupa ~85% da largura do carrossel; a partir de md vira célula da grade
+            className={`glass group relative flex w-[85%] max-w-[340px] shrink-0 snap-start flex-col overflow-hidden rounded-3xl md:w-auto md:max-w-none ${className}`}
         >
             {/* Brilho que acompanha o mouse */}
             <div
@@ -88,9 +89,17 @@ export default function ProjectCard({ project, onOpen }) {
                         className="h-full w-full bg-white object-cover object-top transition duration-500 group-hover:scale-105"
                     />
                 )}
-                <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink backdrop-blur">
+                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.7rem] font-semibold text-ink backdrop-blur">
                     {CATEGORY_LABEL[project.category]}
                 </span>
+                {!links.code && (
+                    <span
+                        className="absolute right-3 top-3 rounded-full bg-ink/80 px-2.5 py-1 text-[0.7rem] font-semibold text-white backdrop-blur"
+                        title="Projeto interno: o código é privado"
+                    >
+                        🔒 Interno
+                    </span>
+                )}
                 <span className="absolute inset-0 grid place-items-center bg-ink/0 transition group-hover:bg-ink/20">
                     <span className="flex scale-75 items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink opacity-0 shadow-lg transition group-hover:scale-100 group-hover:opacity-100">
                         <PlayIcon className="h-3.5 w-3.5" /> Ver detalhes
@@ -98,42 +107,40 @@ export default function ProjectCard({ project, onOpen }) {
                 </span>
             </button>
 
-            <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <h3 className="text-xl font-bold leading-snug">{project.title}</h3>
-                <p className="mb-5 mt-2 flex-1 text-ink/70 dark:text-violet-100/70">{project.summary}</p>
-                <Tags items={project.tags} />
-                <div className="relative z-20 mt-6 flex flex-wrap gap-3">
-                    {links.code ? (
+            {/* versão enxuta: resumo em 2 linhas, até 4 tags; o resto fica no modal */}
+            <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-lg font-bold leading-snug">{project.title}</h3>
+                <p className="mb-4 mt-1.5 line-clamp-2 text-sm text-ink/70 dark:text-violet-100/70">{project.summary}</p>
+                {/* mt-auto empurra tags e botões para o fim, alinhando os cards da mesma linha */}
+                <div className="mt-auto">
+                    <Tags items={project.tags} max={3} />
+                </div>
+                <div className="relative z-20 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold">
+                    <button
+                        type="button"
+                        onClick={() => onOpen(project)}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-white transition hover:bg-lilac-700 dark:bg-lilac-300 dark:text-ink dark:hover:bg-lilac-200"
+                    >
+                        Detalhes
+                    </button>
+                    {links.code && (
                         <a
                             href={links.code}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-lilac-700 dark:bg-lilac-300 dark:text-ink dark:hover:bg-lilac-200"
+                            className="inline-flex items-center gap-1.5 py-2 text-lilac-700 transition hover:text-lilac-500 dark:text-lilac-200"
                         >
                             <CodeIcon className="h-4 w-4" /> Código
                         </a>
-                    ) : (
-                        <button
-                            type="button"
-                            onClick={() => onOpen(project)}
-                            className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-lilac-700 dark:bg-lilac-300 dark:text-ink dark:hover:bg-lilac-200"
-                        >
-                            Ver estudo de caso
-                        </button>
-                    )}
-                    {!links.code && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-dashed border-ink/20 px-3 py-1.5 text-xs font-semibold text-ink/60 dark:border-white/20 dark:text-violet-100/60">
-                            🔒 Código interno
-                        </span>
                     )}
                     {links.demo && (
                         <a
                             href={links.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full border-2 border-lilac-400 px-4 py-1.5 text-sm font-semibold text-lilac-700 transition hover:bg-lilac-400/10 dark:text-lilac-200"
+                            className="inline-flex items-center gap-1.5 py-2 text-lilac-700 transition hover:text-lilac-500 dark:text-lilac-200"
                         >
-                            <ExternalIcon className="h-4 w-4" /> Demo online
+                            <ExternalIcon className="h-4 w-4" /> Demo
                         </a>
                     )}
                 </div>

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { categories, projects } from '../../data/projects.js';
 import ProjectCard from '../projects/ProjectCard.jsx';
@@ -6,12 +6,36 @@ import ProjectModal from '../projects/ProjectModal.jsx';
 import Reveal from '../ui/Reveal.jsx';
 import SectionTitle from '../ui/SectionTitle.jsx';
 
+const GRID_LIMIT = 6;
+
 export default function Projects() {
     const [filter, setFilter] = useState('todos');
     const [selected, setSelected] = useState(null);
     const closeModal = useCallback(() => setSelected(null), []);
 
     const visible = filter === 'todos' ? projects : projects.filter((p) => p.category === filter);
+
+    // carrossel do celular: qual card está visível (para as bolinhas)
+    const trackRef = useRef(null);
+    const [active, setActive] = useState(0);
+    const handleScroll = () => {
+        const el = trackRef.current;
+        const card = el?.firstElementChild;
+        if (!card) return;
+        const step = card.getBoundingClientRect().width + 16; // largura + gap-4
+        setActive(Math.min(visible.length - 1, Math.round(el.scrollLeft / step)));
+    };
+
+    // grade (md+): mostra até GRID_LIMIT cards; o resto aparece com "Ver todos"
+    const [expanded, setExpanded] = useState(false);
+    const hiddenCount = expanded ? 0 : Math.max(0, visible.length - GRID_LIMIT);
+
+    // ao trocar o filtro, volta o carrossel para o primeiro card e recolhe a grade
+    useEffect(() => {
+        trackRef.current?.scrollTo({ left: 0 });
+        setActive(0);
+        setExpanded(false);
+    }, [filter]);
 
     return (
         <section id="projetos" className="scroll-mt-20 py-16 sm:py-24">
@@ -53,13 +77,51 @@ export default function Projects() {
                     </div>
                 </Reveal>
 
-                <motion.div layout className="grid gap-6 sm:gap-8 md:grid-cols-2">
+                {/* celular: carrossel de arrastar pro lado; md: grade de 2 colunas; lg: 3 colunas */}
+                <div
+                    ref={trackRef}
+                    onScroll={handleScroll}
+                    aria-label="Projetos"
+                    className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden"
+                >
                     <AnimatePresence mode="popLayout">
-                        {visible.map((project) => (
-                            <ProjectCard key={project.id} project={project} onOpen={setSelected} />
+                        {visible.map((project, i) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                onOpen={setSelected}
+                                // no grid (md+) mostra só os primeiros até clicar em "Ver todos"; no carrossel aparecem todos
+                                className={!expanded && i >= GRID_LIMIT ? 'md:hidden' : ''}
+                            />
                         ))}
                     </AnimatePresence>
-                </motion.div>
+                </div>
+
+                {hiddenCount > 0 && (
+                    <div className="mt-10 hidden justify-center md:flex">
+                        <button
+                            type="button"
+                            onClick={() => setExpanded((v) => !v)}
+                            aria-expanded={expanded}
+                            className="rounded-full border-2 border-lilac-400 px-6 py-2.5 text-sm font-semibold text-lilac-700 transition hover:bg-lilac-400/10 dark:text-lilac-200"
+                        >
+                            {expanded ? 'Mostrar menos' : `Ver todos os projetos (+${hiddenCount})`}
+                        </button>
+                    </div>
+                )}
+
+                {/* indicador de posição do carrossel (só no celular) */}
+                <div className="mt-5 flex items-center justify-center gap-1.5 md:hidden" aria-hidden="true">
+                    {visible.map((project, i) => (
+                        <span
+                            key={project.id}
+                            className={`h-2 rounded-full transition-all duration-300 ${i === active ? 'w-6 bg-lilac-400' : 'w-2 bg-lilac-400/30'}`}
+                        />
+                    ))}
+                </div>
+                <p className="mt-2 text-center text-xs text-ink/50 md:hidden dark:text-violet-100/50">
+                    Arraste para o lado para ver mais →
+                </p>
             </div>
 
             <AnimatePresence>
